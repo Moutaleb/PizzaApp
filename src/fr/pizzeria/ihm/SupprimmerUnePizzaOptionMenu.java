@@ -1,5 +1,6 @@
 package fr.pizzeria.ihm;
 
+import java.util.List;
 import java.util.Scanner;
 
 import fr.pizzeria.console.Pizza;
@@ -19,12 +20,12 @@ public class SupprimmerUnePizzaOptionMenu extends OptionMenu {
 		Scanner question = new Scanner (System.in);
 		System.out.println("4. Supprimer une pizza");
 		
-		Pizza[] pizzas = pizzaDao.findAllPizzas();
+		List<Pizza> pizzas = pizzaDao.findAllPizzas();
 		
-		for(int i=0; i<pizzas.length; i++) {
+		for(int i=0; i<pizzas.size(); i++) {
 			// il affiche le tableau si ce n'est pas null.
-			if(pizzas[i] != null)
-				System.out.println(pizzas[i].getCode()+" - "+pizzas[i].getNom()+" - "+pizzas[i].getPrix());
+			if(pizzas.get(i) != null)
+				System.out.println(pizzas.get(i).getCode()+" - "+pizzas.get(i).getNom()+" - "+pizzas.get(i).getPrix());
 			}
 		System.out.println("Veuillez choisir la pizza à supprimer.");
 

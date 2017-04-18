@@ -1,5 +1,7 @@
 package fr.pizzeria.dao;
 
+import java.util.List;
+
 import fr.pizzeria.console.Pizza;
 import fr.pizzeria.exception.DeletePizzaException;
 import fr.pizzeria.exception.SavePizzaException;
@@ -7,14 +9,14 @@ import fr.pizzeria.exception.UpdatePizzaException;
 
 public class PizzaDao implements Stockage {
 
-	private Pizza[] pizzas;
+	private List<Pizza> pizzas;
 	
-	public PizzaDao (Pizza [] pizzas){
+	public PizzaDao (List<Pizza> pizzas){
 		this.pizzas=pizzas;
 	}
 
 	@Override
-	public Pizza[] findAllPizzas() {	
+	public List<Pizza> findAllPizzas() {	
 
 		return pizzas;
 	}
@@ -25,21 +27,24 @@ public class PizzaDao implements Stockage {
 		
 		
 		// verif pizza deja existante
-		for (int i=0; i<pizzas.length; i++)
+		for (int i=0; i<pizzas.size(); i++)
 		{		
 			
-			if (pizzas[i]!=null && pizzas[i].getCode().equals(pizza.getCode()))
+			if (pizzas.get(i)!=null && pizzas.get(i).getCode().equals(pizza.getCode()))
 			{
 				throw new SavePizzaException ();
 			}	
 		}
 		
+		pizzas.add(pizza);
+		
+		/*
 		// ajout de pizza
-		for (int i=0; i<pizzas.length; i++)
+		for (int i=0; i<pizzas.size(); i++)
 		{
 			
 			
-			if (pizzas[i]==null)
+			if (pizzas.get(i)==null)
 			{
 				pizzas [i] = pizza;
 				break;
@@ -47,7 +52,7 @@ public class PizzaDao implements Stockage {
 			} 
 			
 		}
-        
+        */
 		
 	}
 
@@ -57,10 +62,13 @@ public class PizzaDao implements Stockage {
 	public void updatePizza(String codePizza, Pizza pizza) throws UpdatePizzaException {
 
         boolean trouver = false;
-		for(int i=0;i<pizzas.length; i++){
-			if(pizzas[i]!=null && pizzas[i].getCode().equals(codePizza) )
+		for(int i=0;i<pizzas.size(); i++){
+			Pizza pizzaCourante = pizzas.get(i);
+			if(pizzaCourante!=null && pizzaCourante.getCode().equals(codePizza) )
 			{
-				pizzas[i]=pizza;
+				pizzaCourante.setNom(pizza.getNom());
+				pizzaCourante.setPrix(pizza.getPrix());
+				
 				trouver = true;
 			
 			}
@@ -83,13 +91,13 @@ public class PizzaDao implements Stockage {
 	public void deletePizza(String codePizza) throws DeletePizzaException {
 		boolean aucunePizzaTrouve = true;
 		
-		for (int i=0; i<pizzas.length; i++)
+		for (int i=0; i<pizzas.size(); i++)
 		{
 			// vérifie la pizza qui veut être supprimer.
-			if (pizzas[i]!=null && codePizza.equals(pizzas[i].getCode()))
+			if (pizzas.get(i)!=null && codePizza.equals(pizzas.get(i).getCode()))
 			{	
 				// suppression de la pizza qui a etait saisie.
-				pizzas[i]= null;
+				pizzas.remove(i);
 				aucunePizzaTrouve = false;
 			}
 		}

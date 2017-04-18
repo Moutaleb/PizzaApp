@@ -1,5 +1,7 @@
 package fr.pizzeria.console;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import fr.pizzeria.dao.PizzaDao;
@@ -31,15 +33,15 @@ public class PizzeriaAdminConsoleApp {
 		pizzas[7] = new String[] {"IND","L'indienne","14.00"}; */
 		
 		
-		Pizza[] pizzas = new Pizza[50];
-		pizzas [0] = new Pizza ("PEP","Péperoni",12.50);
-		pizzas [1] = new Pizza ("MAR","Margherita",14.00);
-		pizzas [2] = new Pizza ("REI","La Reine",11.50);
-		pizzas [3] = new Pizza ("FRO","La 4 fromages",12.00);
-		pizzas [4] = new Pizza ("CAN","La cannibale",12.50);
-		pizzas [5] = new Pizza ("SAV","La savoyarde",13.00);
-		pizzas [6] = new Pizza ("ORI","L'orientale",13.50);
-		pizzas [7] = new Pizza ("IND","L'indienne",14.00);
+		List<Pizza> pizzas = new ArrayList<>();
+		pizzas.add(new Pizza ("PEP","Péperoni",12.50));
+		pizzas.add(new Pizza ("MAR","Margherita",14.00));
+		pizzas.add(new Pizza ("REI","La Reine",11.50));
+		pizzas.add(new Pizza ("FRO","La 4 fromages",12.00));
+		pizzas.add(new Pizza ("CAN","La cannibale",12.50));
+		pizzas.add(new Pizza ("SAV","La savoyarde",13.00));
+		pizzas.add(new Pizza ("ORI","L'orientale",13.50));
+		pizzas.add(new Pizza ("IND","L'indienne",14.00));
 		
 		Stockage dao = new PizzaDao(pizzas);
 	

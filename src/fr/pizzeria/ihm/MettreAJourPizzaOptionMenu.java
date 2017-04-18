@@ -1,5 +1,7 @@
 package fr.pizzeria.ihm;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import fr.pizzeria.console.Pizza;
@@ -20,11 +22,11 @@ public class MettreAJourPizzaOptionMenu extends OptionMenu {
 		
 		System.out.println("3. Mettre à jour une pizza");
 		
-		Pizza[] pizzas = pizzaDao.findAllPizzas();
+		List<Pizza> pizzas = pizzaDao.findAllPizzas();
 		
-		for(int i=0; i<pizzas.length; i++) {
-			if(pizzas[i] != null)
-				System.out.println(pizzas[i].getCode()+" - "+pizzas[i].getNom()+" - "+pizzas[i].getPrix());
+		for(int i=0; i<pizzas.size(); i++) {
+			if(pizzas.get(i) != null)
+				System.out.println(pizzas.get(i).getCode()+" - "+pizzas.get(i).getNom()+" - "+pizzas.get(i).getPrix());
 			}
 		System.out.println("Veuillez choisir le code de la pizza a modifier.");
 		String codepizzaAmodifier = question.next();
@@ -37,7 +39,9 @@ public class MettreAJourPizzaOptionMenu extends OptionMenu {
 		System.out.println("Veuillez saisir le prix");
 		double prix = question.nextDouble();
 		
-		Pizza pizza = new Pizza (code,libelle,prix);
+		
+		//List<Pizza> pizza = new ArrayList<>();
+    	Pizza pizza = new Pizza (code,libelle,prix);
 		
 		try {
 			pizzaDao.updatePizza(codepizzaAmodifier, pizza);

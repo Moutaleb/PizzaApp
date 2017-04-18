@@ -1,5 +1,7 @@
 package fr.pizzeria.dao;
 
+import java.util.List;
+
 import fr.pizzeria.console.Pizza;
 import fr.pizzeria.exception.DeletePizzaException;
 import fr.pizzeria.exception.SavePizzaException;
@@ -8,7 +10,7 @@ import fr.pizzeria.exception.UpdatePizzaException;
 public class PizzaDaoFichier implements Stockage {
 
 	@Override
-	public Pizza[] findAllPizzas() {
+	public List<Pizza> findAllPizzas() {
 		// TODO Auto-generated method stub
 		return null;
 	}
