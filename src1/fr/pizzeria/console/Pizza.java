@@ -18,6 +18,10 @@ public class Pizza {
 		this.prix = prix;
 	}
 
+	public Pizza(String code2, String string, Double double1, CategoriePizza valueOf2) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getId() {
 		return id;
 	}

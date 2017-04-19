@@ -18,4 +18,8 @@ public interface Stockage {
 
 	void deletePizza(String codePizza) throws DeletePizzaException;
 
+	Pizza findPizzaById(int id);
+
+	Pizza findPizzaByCode(String code);
+
 }

@@ -1,15 +1,25 @@
 package fr.pizzeria.ihm;
 
-import fr.pizzeria.dao.Stockage;
+import fr.pizzeria.dao.GetDao;
+import fr.pizzeria.dao.IPizzaDao;
 
-public abstract class OptionMenu {
-	
-	protected Stockage pizzaDao;
-	
-	public OptionMenu (Stockage pizzaDao){
-		this.pizzaDao = pizzaDao;
-		
+abstract class OptionMenu {
+	private String libele;
+	IPizzaDao pizzas;
+
+	public OptionMenu(String libele) {
+		this.pizzas = GetDao.get();
+		this.libele = libele;
 	}
-	
+
+	public String getLibele() {
+		return libele;
+	}
+
+	public void setLibele(String libele) {
+		this.libele = libele;
+	}
+
+	public abstract boolean execute();
 
 }

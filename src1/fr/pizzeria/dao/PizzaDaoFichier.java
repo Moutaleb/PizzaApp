@@ -33,4 +33,16 @@ public class PizzaDaoFichier implements Stockage {
 		
 	}
 
+	@Override
+	public Pizza findPizzaById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Pizza findPizzaByCode(String code) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

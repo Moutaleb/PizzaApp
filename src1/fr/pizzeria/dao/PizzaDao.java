@@ -93,7 +93,7 @@ public class PizzaDao implements Stockage {
 		
 		for (int i=0; i<pizzas.size(); i++)
 		{
-			// vérifie la pizza qui veut être supprimer.
+			// vï¿½rifie la pizza qui veut ï¿½tre supprimer.
 			if (pizzas.get(i)!=null && codePizza.equals(pizzas.get(i).getCode()))
 			{	
 				// suppression de la pizza qui a etait saisie.
@@ -105,5 +105,17 @@ public class PizzaDao implements Stockage {
 			throw new DeletePizzaException();
 		}
 
+	}
+
+	@Override
+	public Pizza findPizzaById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Pizza findPizzaByCode(String code) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
